@@ -1,0 +1,94 @@
+[build-system]
+requires = ["hatchling>=1.18"]
+build-backend = "hatchling.build"
+
+[project]
+name = "hypermid"
+version = "1.0.0"
+description = "Cross-chain swap, bridge & fiat on-ramp SDK — 90+ chains across EVM, Solana, Bitcoin, NEAR, Sui, Tron, TON. Anonymous-tier ready (no API key required)."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Hypermid" }]
+keywords = [
+    "hypermid",
+    "swap",
+    "bridge",
+    "cross-chain",
+    "cross-chain-swap",
+    "bridge-aggregator",
+    "dex-aggregator",
+    "swap-api",
+    "bridge-api",
+    "defi",
+    "defi-sdk",
+    "web3",
+    "web3-sdk",
+    "ethereum",
+    "evm",
+    "solana",
+    "bitcoin",
+    "near",
+    "near-intents",
+    "sui",
+    "tron",
+    "ton",
+    "pulsechain",
+    "onramp",
+    "fiat-onramp",
+    "wallet-balances",
+    "multi-chain",
+    "webhooks",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+    "Typing :: Typed",
+]
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.6",
+]
+
+[project.urls]
+Homepage = "https://docs.hypermid.io"
+Repository = "https://github.com/Hypermid/hypermid-sdk-py"
+Issues = "https://github.com/Hypermid/hypermid-sdk-py/issues"
+Documentation = "https://docs.hypermid.io"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-asyncio>=0.23",
+    "mypy>=1.10",
+    "ruff>=0.4",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/hypermid"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"src/hypermid/py.typed" = "hypermid/py.typed"
+
+[tool.hatch.build.targets.sdist]
+include = ["src/hypermid", "README.md", "LICENSE", "pyproject.toml"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.mypy]
+strict = true
+python_version = "3.9"
