@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "hypermid"
-version = "1.0.0"
+version = "1.1.0"
 description = "Cross-chain swap, bridge & fiat on-ramp SDK — 90+ chains across EVM, Solana, Bitcoin, NEAR, Sui, Tron, TON. Anonymous-tier ready (no API key required)."
 readme = "README.md"
 requires-python = ">=3.9"

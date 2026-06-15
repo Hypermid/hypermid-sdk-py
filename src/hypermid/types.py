@@ -86,6 +86,12 @@ class StatusResponse(_Base):
     provider: Literal["lifi", "near-intents", "superswap"]
     status: Optional[str] = None
 
+    # SuperSwap V2 fields (provider == "superswap"). The ``sending`` / ``receiving``
+    # legs remain accessible as dynamic attributes (extra fields are allowed).
+    hyperlane_message_id: Optional[str] = Field(None, alias="hyperlaneMessageId")
+    sub_status: Optional[str] = Field(None, alias="subStatus")
+    destination_tx_hash: Optional[str] = Field(None, alias="destinationTxHash")
+
 
 # ─── Execute ─────────────────────────────────────────────────────────────
 
@@ -110,6 +116,18 @@ class ExecuteResponse(_Base):
     provider: Literal["lifi", "near-intents", "superswap"]
     deposit_mode: str = Field(..., alias="depositMode")
     fee_bps: int = Field(..., alias="feeBps")
+
+    # SuperSwap V2 fields (provider == "superswap"). Approve ``approval_address``
+    # (source DiamondShell, equals ``transaction_request.to``), then sign and
+    # broadcast ``transaction_request``.
+    source: Optional[str] = None
+    approval_address: Optional[str] = Field(None, alias="approvalAddress")
+    estimated_output: Optional[str] = Field(None, alias="estimatedOutput")
+    min_output: Optional[str] = Field(None, alias="minOutput")
+    transaction_request: Optional[TransactionRequest] = Field(
+        None, alias="transactionRequest"
+    )
+    v2: Optional[bool] = None
 
 
 # ─── Deposit (NEAR Intents) ──────────────────────────────────────────────
